@@ -113,7 +113,7 @@ static int mtd_status(void)
 						ret = instances[i].part_dev[p]->ioctl(instances[i].part_dev[p], MTDIOC_GEOMETRY, (unsigned long)((uintptr_t)&geo));
 						printf("    partition: %u:\n", p);
 						printf("     name:   %s\n", instances[i].partition_names[p]);
-						printf("     blocks: %" PRIu32 " (%" PRIu32 " bytes)\n", geo.neraseblocks, erasesize * geo.neraseblocks);
+						printf("     blocks: %" PRIu32 " (%lu bytes)\n", geo.neraseblocks, erasesize * geo.neraseblocks);
 						totalnblocks += geo.neraseblocks;
 						totalpartsize += erasesize * geo.neraseblocks;
 					}
