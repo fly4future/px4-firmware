@@ -33,7 +33,9 @@
 
 add_library(bootloader
 	bl.c
+	image_toc.c
 	${PX4_CHIP}/main.c
+	${PX4_CHIP}/systick.c
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

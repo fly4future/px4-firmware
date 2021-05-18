@@ -32,7 +32,6 @@
 ############################################################################
 
 add_library(bootloader_lib
-	systick.c
 	cdcacm.c
 	uart.c
 	flash_cache.c
