@@ -31,12 +31,6 @@
 #
 ############################################################################
 
-add_library(drivers_board
-	init.c
-	toc.c
-)
-
-
 add_custom_command(
     OUTPUT  ${NUTTX_DIR}/arch/risc-v/src/mpfs_vectors.o
     DEPENDS nuttx_arch
@@ -48,12 +42,33 @@ add_library(mpfs_head
 
 set_target_properties(mpfs_head PROPERTIES LINKER_LANGUAGE ASM)
 
-target_link_libraries(drivers_board
-	PRIVATE
-		mpfs_head
-#		arch_spi
-#		drivers__led # drv_led_start
-		nuttx_arch
-		nuttx_drivers
-		px4_layer
-)
+
+if("${PX4_BOARD_LABEL}" STREQUAL  "bootloader")
+	add_library(drivers_board
+		bootloader_main.c
+	)
+	target_link_libraries(drivers_board
+		PRIVATE
+			mpfs_head
+			nuttx_arch
+			nuttx_drivers
+			bootloader
+	)
+	target_include_directories(drivers_board PRIVATE ${PX4_SOURCE_DIR}/platforms/nuttx/src/bootloader)
+
+else()
+	add_library(drivers_board
+		init.c
+		toc.c
+	)
+
+	target_link_libraries(drivers_board
+		PRIVATE
+			mpfs_head
+#			arch_spi
+#			drivers__led # drv_led_start
+			nuttx_arch
+			nuttx_drivers
+			px4_layer
+	)
+endif()
