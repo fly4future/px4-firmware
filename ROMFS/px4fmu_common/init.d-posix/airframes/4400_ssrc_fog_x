@@ -38,4 +38,8 @@ then
 	param set SENS_IMU_MODE 1
 	param set EKF2_MULTI_MAG 0
 	param set SENS_MAG_MODE 1
+
+  # set tighter constraints on altitude and max velocity
+  param set NAV_MC_ALT_RAD 0.1
+  param set MPC_XY_VEL_ALL 3.0
 fi
