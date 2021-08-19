@@ -38,4 +38,16 @@ then
 	param set SENS_IMU_MODE 1
 	param set EKF2_MULTI_MAG 0
 	param set SENS_MAG_MODE 1
+
+  param set SDLOG_PROFILE 1023 # 1023
+  param set EKF2_AID_MASK 281 # 281
+  param set EKF2_HGT_MODE 3 # 3
+  param set EKF2_EV_DELAY 50 # 50
+  param set EKF2_EV_NOISE_MD 1 #
+  # param set EKF2_EVP_NOISE 1.0 # covariances from params
+  # param set EKF2_EVA_NOISE 0.2
+  # param set EKF2_EVV_NOISE 1.0
+  param set EKF2_EV_POS_X 0 # Set the position of the vision sensor (or MoCap markers) with respect to the robot's body frame
+  param set EKF2_EV_POS_Y 0
+  param set EKF2_EV_POS_Z	0 
 fi
